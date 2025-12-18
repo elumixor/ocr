@@ -1,0 +1,18 @@
+{
+  "name": "ocr",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "process-single": "bun run src/process-single.ts",
+    "process-all": "bun run src/process-all.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "openai": "^6.14.0"
+  }
+}
