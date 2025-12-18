@@ -53,15 +53,16 @@ async function main() {
 			});
 
 			// Copy source image to public folder
-			const sourceFiles = (await readdir(folderPath)).filter((f) =>
-				f.startsWith("source"),
+			const allFiles = await readdir(folderPath);
+			const imageFile = allFiles.find(
+				(f) => f.startsWith("source.") && /\.(jpeg|jpg|png)$/i.test(f),
 			);
-			if (sourceFiles.length > 0) {
+			if (imageFile) {
 				const songDir = path.join(PUBLIC_SONGS_DIR, folder);
 				await mkdir(songDir, { recursive: true });
 				await cp(
-					path.join(folderPath, sourceFiles[0] as string),
-					path.join(songDir, sourceFiles[0] as string),
+					path.join(folderPath, imageFile),
+					path.join(songDir, imageFile),
 				);
 			}
 		} catch {
