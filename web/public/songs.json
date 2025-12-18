@@ -1,68 +1,62 @@
 [
   {
-    "id": "bells-chime",
-    "title": "Bells Chime",
-    "ukrainian": "ДЗВОНИ ДЗВОНЯТЬ\n\nДзво-ни дзво-нять, дзво-ни дзво-нять на у-сій зем-лі.\nЗірка на ніч-но-му не-бі одна зійш-ла, дзво-ни дзво-нять,\nВ Ви-флеє-мі устале-ні Немо-вляне спить, рученята простягає.\n\nДзво-ни дзво-нять, дзво-ни дзво-нять на у-сій зем-лі.\nПо-спіша-ють пастуш-ки ма-лі. Дзво-ни дзво-нять\nна новину людям прине-ся. Орфією хто люблячи простягає,\n\nПросять в рученя-та дитину, людям принесе :\nними землю обіймає, люд благослови.",
-    "romanian": "CLUPELETE SUNĂ\n\nClopoțeii sună, clopoțeii sună pe întregul pământ.\nO stea pe cerul nopții una s-a ridicat, clopoțeii sună,\nÎn Betleem pruncul s-a așezat să doarmă, întinde mânuțele.\n\nClopoțeii sună, clopoțeii sună pe întregul pământ.\nPăstorii mici se grăbesc. Clopoțeii sună\nca să aducă vestea oamenilor. Cine iubește și întinde mâinile,\n\nCere pruncului în mânuțele acestea, oamenilor va aduce :\ncu ele îmbrățișează pământul, binecuvântează oamenii."
+    "id": "bells-ringing",
+    "title": "Bells Ringing",
+    "ukrainian": "Дзвони дзвонять\n\nДзвони дзвонять, дзвони дзвонять\nДзвони дзвонять, дзвони дзвонять на усій землі\nДо яскині йдіть, до яскині йдіть\nДо яскині поспішають пастушки малі\nДзвони дзвонять\nДо яскині поспішають\nДе Дитятко всі вітають\nДзвони дзвонять пастушки малі\nДе Дитятко всі вітають",
+    "romanian": "Clopotele sună\n\nClopotele sună, clopotele sună\nClopotele sună, clopotele sună pe tot pământul\nLa peșteră mergeți, la peșteră mergeți\nLa peșteră se grăbesc păstorașii mici\nClopotele sună\nLa peșteră se grăbesc\nUnde pe Prunc toți îl întâmpină\nClopotele sună păstorașii mici\nUnde pe Prunc toți îl întâmpină"
   },
   {
-    "id": "bethlehem-infant",
-    "title": "Bethlehem Infant",
-    "ukrainian": "5. В Вифлеємі у стаєнці\nНемовля не спить,\nРученята простягає,\nЛюд благословить.\nРученята простягає,\nНими землю обіймає,\nЛюд благословить.",
-    "romanian": "5. În Betleem în staul\nPruncul nu doarme,\nÎntinde mâinile,\nBinecuvântează poporul.\nÎntinde mâinile,\nCu ele îmbrățișează pământul,\nBinecuvântează poporul."
+    "id": "god-sent-us",
+    "title": "God Sent Us",
+    "ukrainian": "Радієть Бог нам посила\nДіва сина родила.\nНебеса, небеса,\nнебеса, славлять, славлять,\nнебеса, небеса,\nнебеса, славлять, славлять, давують ся архангели,\nа пастирі піснь завели\nНародженному.",
+    "romanian": "Se bucură Dumnezeu ne trimite\nFecioara fiu a născut.\nCerurile, cerurile,\ncerurile, slăvesc, slăvesc,\ncerurile, cerurile,\ncerurile, slăvesc, slăvesc, se minunează arhanghelii,\niar păstorii cântec au început\nCelui Născut."
   },
   {
-    "id": "bethlehem-stable",
-    "title": "Bethlehem Stable",
-    "ukrainian": "5. В Вифлеємі у стаєнці\nНемовля не спить,\nРученята простягає,\nЛюд благословить.\nРученята простягає,\nНими землю обіймає,\nЛюд благословить.",
-    "romanian": "5. În Betleem în staul\nPruncul nu doarme,\nÎși întinde mânuțele,\nBinecuvântează oamenii.\nÎși întinde mânuțele,\nCu ele cuprinde pământul,\nBinecuvântează oamenii."
+    "id": "in-every-world",
+    "title": "In Every World",
+    "ukrainian": "По всьому світу стала новина:\nА Діва Марія Сина породила.\nВ яслях положила, сіном притрусила,\nПринесли три царі дари до землі.\n\nА Син цей почув сіла\nТи не бесний царю\nТи свій ум боскові\n\nВ яслях положила господнього Сина.\nПомчали мечі дари всім цим господарям.\nГосподній не хотів радість подкосяти,\nЩо й він зі швоковий в його вихитють ві.",
+    "romanian": "În toată lumea s-a răspândit vestea:\nFecioara Maria a născut un Fiu.\nL-a pus în iesle, l-a acoperit cu fân,\nTrei crai au adus daruri pe pământ.\n\nIar Fiul acesta a auzit satele\nTu nu ești rege nebun\nTu mintea ta lui Dumnezeu\n\nÎn iesle l-a pus pe Fiul Domnului.\nAu grăbit sabie daruri tuturor acestor stăpâni.\nDomnul nu a vrut să taie bucuria,\nCă și el cu înțelepciunea în ea se pricepe."
   },
   {
-    "id": "birth-in-bethlehem",
-    "title": "Birth In Bethlehem",
-    "ukrainian": "1. В яс-лях Виф-ли-ємсь-ких на-ро-див-ся з Діви Пре-свя-тої во пло-ти-вся\n2. Бо-гу нашо-му хва-лу, відда-мо Тройцю свя-ту про-сла-вляймо,\n    зір-ка в не-бі за-ся-я-ла що Спа-си-тель з не-ба при-йшов\n    радісну новину з Вифлеєм, він розкаже в день Різдва,\n    Пас-тухи при-хо-дять по-кло-ни-тись на Мла-ден-ця Бо-га по-ди-вись\n    Молимось до Пресвятої Діви, Щоб Вона усіх нас Захистила,\n    а зі схо-ду три славні-ї ца-рі сво-ї да-ри Йо-му не-суть\n    і своїми словами молитвами в Царство Боже всіх нас прийми",
-    "romanian": "1. În ieslea din Betleem s-a născut din Fecioara Preasfântă s-a întrupat\n2. Să-L slăvim pe Dumnezeu, să-L preamărim pe Sfânta Treime,\n    steaua în cer a strălucit că Mântuitorul din cer a venit\n    vestea cea bună din Betleem, o va spune de Crăciun,\n    păstorii vin să se închine Pruncului Domnului să privească\n    Ne rugăm la Fecioara Preasfântă, să ne ocrotească pe toți,\n    și din est trei magi slăviți darurile lor Ii aduc\n    și cu cuvintele noastre rugătoare în Împărăția lui Dumnezeu pe toți să ne primească"
+    "id": "jesus-sleeps",
+    "title": "Jesus Sleeps",
+    "ukrainian": "В яслах Вифлиємських народився\nа Діви Пресвятої воплотився\n\nзірка в небі ясна засіяла\nщо Спасителя нам оба прийшов\n\nПастухи приходять поклонитись\nна Младенця Бога подивитись\n\nа ті сходу три славні і парі\nсвої дари Йому несуть",
+    "romanian": "În ieslea Betleemului s-a născut\nși din Fecioara Sfântă s-a întrupat\n\nsteaua în cer strălucitoare a luminat\ncă Mântuitorul nostru a venit\n\nPăstorii vin să se închine\nla Pruncul Dumnezeu să privească\n\niar cei trei slăviți și împărați din răsărit\ndarurile lor Îi aduc"
   },
   {
-    "id": "birth-of-christ",
-    "title": "Birth Of Christ",
-    "ukrainian": "5. З дарами царі прийшли,\nЧесть Христові віддали,\nНашому (3) Богу (2)\nНа цілий світ славу дали,\nХриста в яслах привітали\nІ бідний вертеп.\n\n6. І ми Його вітаймо,\nРазом Йому співаймо:\n\"Виростай (3), Спасе (2),\nДай нам в мирі всім пожити\nТа повік Тебе хвалити\nНародженного.\"",
-    "romanian": "5. Cu daruri regii au venit,\nCinste lui Hristos au adus,\nDumnezeului nostru (3) (2)\nGlorie în întreaga lume au dat,\nPe Hristos în iesle au salutat\nȘi săracul staul.\n\n6. Și noi să-l salutăm,\nÎmpreună să-I cântăm:\n\"Crește (3), Mântuitor (2),\nDă-ne nouă pace să trăim\nȘi pe vecie să te lăudăm\nPe Cel Născut.\""
+    "id": "little-jesus-sleep",
+    "title": "Little Jesus Sleep",
+    "ukrainian": "Ти мамі дав кохання,\nголос маленький\nСни в ясельце, спи в ясельце,\nспи маленький спи.\nСни всюди спи, об серце бито-ри\nКай при ньому скочила,\nти на землі і тиж віра.\nСпи Ісусе спи маленький,\nспи серденько спи серденько,\nвиссердечно і повторить от знака\nдо оконсання.",
+    "romanian": "Tu mamei i-ai dat iubire,\nvoce micuță\nDormi în iesle, dormi în iesle,\ndormi micuțule dormi.\nDormi peste tot dormi, despre inima bate\nCând lângă el a sărit,\ntu pe pământ și tot credința.\nDormi Isuse dormi micuțule,\ndormi inimioară dormi inimioară,\ndin toată inima și repetă de la semn\npână la sfârșit."
   },
   {
-    "id": "bucuria-cerului",
-    "title": "Bucuria Cerului",
-    "ukrainian": "Радість Бог нам посила:\nДіва Сина породила.\nНебеса, небеса, небеса славлять,\nнебеса, небеса, дивуються Аpxaнгели,\nа пастирі піснь завели,\nнаpодженному.\n\n1. Радість Бог нам посила:\nДіва Сина породила.\nНебеса, небеса, небеса славлять,\nнебеса, небеса,\n\n2. Заради пpишлим у честь Христа,\nстояли, віддали.\nНа, чому, нашому, поспівали мо:\nвростай, виростай,\nнебеса славлять, небеса,\nславлять, дівуємось Аpxангели,\n\n3. А ми чого витаймо.\nНа цілій світ славу дали Богові Богу.\nНа, чому, нашому, виростай, виростай,\nнебеса, славлять, спаси спаси,\nхристия в славах привітали\nі бідний вертеп.\nТа повік тебе хвалити,\nнародженному.",
-    "romanian": "Bucuria ne-a trimis Dumnezeu:\nFecioara a născut un Fiu.\nCerurile, cerurile, cerurile slăvesc,\ncerurile, cerurile, se minunează Arhanghelii,\niar păstorii au început cântec,\ncelui născut.\n\n1. Bucuria ne-a trimis Dumnezeu:\nFecioara a născut un Fiu.\nCerurile, cerurile, cerurile slăvesc,\ncerurile, cerurile,\n\n2. Cu-așa recepție am venit în onoarea lui Hristos,\nau stat, au dat.\nPe, ce, al nostru, am cântat:\ncrești, crești,\ncerurile slăvesc, cerurile,\nslăvesc, se minunează Arhanghelii,\n\n3. Și noi ce întâmpinăm.\nPe întreaga lume slavă i-am dat lui Dumnezeu lui Dumnezeu.\nPe, ce, al nostru, crești, crești,\ncerurile, slăvesc, salvează, salvează,\ncreștinii au întâmpinat în slave\nși săracul vetreapă.\nȘi pe vecie să te lăudăm,\nnăscutului."
+    "id": "praise-to-god",
+    "title": "Praise To God",
+    "ukrainian": "Богу нашему хвалу віддаймо,\nТройцю Святую прославляймо,\nРадісну новину з Вифлиєму,\nВсім розкажем в день Різдва\n\nМолимось до Пресвятої Діви,\nЩоб Вона усіх нас захистила,\nІ Своїми сильними молитвами\nВ Царство Боже всіх нас привела",
+    "romanian": "Să dăm laudă Dumnezeului nostru,\nSă slăvim Sfânta Treime,\nVestea bucuroasă din Betleem,\nTuturor să spunem în ziua Crăciunului\n\nNe rugăm la Presfânta Fecioară,\nCa Ea pe toți să ne ocrotească,\nȘi cu rugăciunile Sale puternice\nÎn Împărăția lui Dumnezeu pe toți să ne ducă"
   },
   {
-    "id": "christmas-bethlehem-news",
-    "title": "Christmas Bethlehem News",
-    "ukrainian": "2. Богу нашему хвалу віддаймо,\nТрійцю Святую прославляймо,\nРадісну новину з Вифлиєму,\nВсім розкажем в день Різдва\n\nМолимось до Пресвятої Діви,\nЩоб Вона усіх нас захистила,\nІ Своїми сильними молитвами\nВ Царство Боже всіх нас привела\n\nПриспів:",
-    "romanian": "2. Domnului nostru laudă-i vom da,\nTrinitatea Sfântă s-o slăvim azi,\nVestea cea bună din Betleem,\nTuturor spunem de Crăciun\n\nNe rugăm la Sfânta Fecioară,\nSă ne ocrotească pe toți,\nȘi cu rugăciunile-i puternice\nÎn Împărăția Domnului să ne ducă\n\nRefren:"
+    "id": "sleep-baby-jesus",
+    "title": "Sleep Baby Jesus",
+    "ukrainian": "Спи, Ісусе, спи, очка зажмури,\nа я Тебе буду колисати пісеньками примовляти.\nСпи, Ісусе, спи маленький,\nде би колисати пісеньками примовляти.\nСпи, Ісусе, спи маленький,\nспи маленький, спи, Ісусе, спи.\nСпи серденько, спи соколику,\nспи легінько, спи голубоньку,\nта на ручень.",
+    "romanian": "Dormi, Isuse, dormi, închide ochișorii,\niar eu Te voi legăna cu cântecele mele.\nDormi, Isuse, dormi micuțule,\nunde să te legăn cu cântecele mele.\nDormi, Isuse, dormi micuțule,\ndormi micuțule, dormi, Isuse, dormi.\nDormi inimioară, dormi șoimule,\ndormi ușurel, dormi porumbele,\npe brațe."
   },
   {
-    "id": "christmas-star",
-    "title": "Christmas Star",
-    "ukrainian": "2. Зірка на нічному небі\nОсяйна зійшла.\nДовгожданную новину\nЛюдям принесла.\nДовгожданную новину\nПро Святу Божу Дитину\nЛюдям принесла.",
-    "romanian": "2. Steaua pe cerul de noapte\nStrălucitoare s-a ridicat.\nVestea mult așteptată\nOamenilor a adus.\nVestea mult așteptată\nDespre Sfântul Copil Divin\nOamenilor a adus."
+    "id": "sleepless-night",
+    "title": "Sleepless Night",
+    "ukrainian": "В Вифлеємі у стаєнці\nНемовля не спить,\nРученята простягає,\nЛюд благословить.\nРученята простягає,\nНими землю обіймає,\nЛюд благословить.",
+    "romanian": "În Betleem în iesle\nPruncul nu doarme,\nMânuțele întinde,\nPoporul binecuvântează.\nMânuțele întinde,\nCu ele pământul îmbrățișează,\nPoporul binecuvântează."
   },
   {
-    "id": "lullaby-dreams",
-    "title": "Lullaby Dreams",
-    "ukrainian": "\"Чудова колискова\"\n\nCп’... \nСпи i-су-се спи, о-ча за-чь-рi. йа Те\nHьо-му cпи-вa-ють ту на землі i там в pa-й\nде бу колис-ти пісенькою присиплю-ти, спи i-су-се, спи маленький спи i-су-се\nспи маленький спи i-су-се спи.\n\n(РР)\nспи середн'ко спи, темн'...\n\nСпи ле-лій-ко\nспи\nго-ло-вy скло-ни\nта на руз'нь...",
-    "romanian": "\"Leagăn minunat\"\n\nDorm’... \nDormi, Iisuse, dormi, închide ochii. Eu Te\nCerului îi cântă aici pe pământ și acolo în rai\nunde un cântec de leagăn te adoarme, dormi, Iisuse, dormi mic Iisuse\ndormi mic Iisuse, dormi.\n\n(PP)\ndormi drag, dormi, întuneric’...\n\nDormi blând\nDormi\nLasă-ți capul jos\nși pe braț..."
+    "id": "star-brings-news",
+    "title": "Star Brings News",
+    "ukrainian": "Зірка на нічному небі\nОсяяла зійшла.\nДовгожданную новину\nЛюдям принесла.\nДовгожданную новину\nПро Святу Божу Дитину\nЛюдям принесла.",
+    "romanian": "Steaua pe cerul nopții\nStrălucind a răsărit.\nVestea mult așteptată\nOamenilor a adus.\nVestea mult așteptată\nDespre Sfântul Prunc Divin\nOamenilor a adus."
   },
   {
-    "id": "sleep-little-one",
-    "title": "Sleep Little One",
-    "ukrainian": "засни малий і бавона  \nзо леніє, спи-ї-су-се спи маленький  \n\nспи леліійно спи на f  \n f  спи ї су-се, а серце вто-р  f о  \n\nт*най при нівому  \nie послова, тузо землі і так вра спи-ї-су-се  \n\nспи маленький спи сердечку ти сердечку и повторить от знака ф  \ndo „окончания”",
-    "romanian": "dormi mic și blând \nca un crin, dormi-i-i-i, dormi micuțule\n\ndormi blând ca un crin \npe f \n f  dormi-ți, iar inima ta este\n\nl*la noul \nnu spune, de la pământ și astfel trimite dormi-i-i-i\n\ndormi micuțule dormi, inima, inima \nși repetă de la semnul ф \npână la „sfârșit”"
-  },
-  {
-    "id": "throughout-the-world",
-    "title": "Throughout The World",
-    "ukrainian": "По всьому світу стала новина — \nДіва Марія сина родила. \nЗійшли ангели з неба до землі, \nПринесли дари Діві Марії. \nРосія лла звізда з неба до землі,\nСпинившись при пустила свого ясного,\nЦапко святого. \nАпостоли у рiздвiй вин ≤о-\nползінняоди вовехи пісні. \nТрансвічі воско-вi почьє не <…> сьдє. \n\nВ яслях положила господарю Бога, \nПослан мені дари всім цим господарям.",
-    "romanian": "Prin toată lumea a apărut o veste —\nFecioara Maria a născut un fiu.\nÎngerii au coborât din cer pe pământ,\nAu adus daruri Fecioarei Maria.\nO stea a coborât din cer pe pământ,\nOprindu-se, a emis lumină puternică,\nPe lumina sfântă.\nApostolii aduc în sărbătoare cântări vesele.\nLe oferă pe tot parcursul anului.\n\nÎn iesle a pus Domnul Dumnezeu,\nTrimite-mi daruri tuturor acestor gospodari."
+    "id": "three-kings-gifts",
+    "title": "Three Kings Gifts",
+    "ukrainian": "З дарами царі прийшли,\nЧесть Христові віддали,\nНашому Богу\nНа цілий світ славу дали,\nХриста в яслах привітали\nІ бідний вертеп.\n\nІ ми Його вітаймо,\nРазом Йому співаймо:\n\"Виростай, Спасе,\nДай нам в мирі всім пожити\nТа повік Тебе хвалити\nНародженного.\"",
+    "romanian": "Cu daruri au venit regii,\nCinste lui Hristos au dat,\nDumnezeului nostru\nÎn toată lumea slavă au dat,\nPe Hristos în iesle l-au salutat\nȘi săracul staul.\n\nȘi noi pe El să-L salutăm,\nÎmpreună Lui să-I cântăm:\n\"Crește, Mântuitorule,\nDă-ne în pace cu toții să trăim\nȘi pe veci pe Tine să Te lăudăm\nCel Născut.\""
   }
 ]

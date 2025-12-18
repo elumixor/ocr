@@ -1,66 +1,69 @@
-import { processImage } from "./process-image";
-import { mkdir, copyFile, writeFile, readdir } from "fs/promises";
+import { copyFile, mkdir, readdir, writeFile } from "fs/promises";
 import path from "path";
+import { processImage } from "./process-image";
 
 const IMAGE_EXTENSIONS = [".jpeg", ".jpg", ".png"];
 
 async function main() {
-  const inputDir = process.argv[2] || "./images";
+	const inputDir = process.argv[2] || "./images";
 
-  console.log(`Processing all images in: ${inputDir}`);
+	console.log(`Processing all images in: ${inputDir}`);
 
-  // Get all image files
-  const files = await readdir(inputDir);
-  const imageFiles = files.filter((f) =>
-    IMAGE_EXTENSIONS.includes(path.extname(f).toLowerCase())
-  );
+	// Get all image files
+	const files = await readdir(inputDir);
+	const imageFiles = files.filter((f) =>
+		IMAGE_EXTENSIONS.includes(path.extname(f).toLowerCase()),
+	);
 
-  if (imageFiles.length === 0) {
-    console.log("No image files found.");
-    return;
-  }
+	if (imageFiles.length === 0) {
+		console.log("No image files found.");
+		return;
+	}
 
-  console.log(`Found ${imageFiles.length} images to process.\n`);
+	console.log(`Found ${imageFiles.length} images to process.\n`);
 
-  let processed = 0;
-  let failed = 0;
+	let processed = 0;
+	let failed = 0;
 
-  for (const file of imageFiles) {
-    const imagePath = path.join(inputDir, file);
-    console.log(`[${processed + failed + 1}/${imageFiles.length}] Processing: ${file}`);
+	await Promise.all(
+		imageFiles.map(async (file) => {
+			const imagePath = path.join(inputDir, file);
+			console.log(
+				`[${processed + failed + 1}/${imageFiles.length}] Processing: ${file}`,
+			);
 
-    try {
-      const result = await processImage(imagePath);
+			try {
+				const result = await processImage(imagePath);
 
-      // Create output directory
-      const outDir = path.join("out", result.title);
-      await mkdir(outDir, { recursive: true });
+				// Create output directory
+				const outDir = path.join("out", result.title);
+				await mkdir(outDir, { recursive: true });
 
-      // Copy source image
-      const sourceExt = path.extname(imagePath);
-      const sourceDest = path.join(outDir, `source${sourceExt}`);
-      await copyFile(imagePath, sourceDest);
+				// Copy source image
+				const sourceExt = path.extname(imagePath);
+				const sourceDest = path.join(outDir, `source${sourceExt}`);
+				await copyFile(imagePath, sourceDest);
 
-      // Write Ukrainian text
-      const ukrainianPath = path.join(outDir, "ukrainian.txt");
-      await writeFile(ukrainianPath, result.ukrainian, "utf-8");
+				// Write Ukrainian text
+				const ukrainianPath = path.join(outDir, "ukrainian.txt");
+				await writeFile(ukrainianPath, result.ukrainian, "utf-8");
 
-      // Write Romanian translation
-      const romanianPath = path.join(outDir, "romanian.txt");
-      await writeFile(romanianPath, result.romanian, "utf-8");
+				// Write Romanian translation
+				const romanianPath = path.join(outDir, "romanian.txt");
+				await writeFile(romanianPath, result.romanian, "utf-8");
 
-      console.log(`  -> Saved to: ${outDir}`);
-      processed++;
-    } catch (error) {
-      console.error(`  -> Error: ${error instanceof Error ? error.message : error}`);
-      failed++;
-    }
+				console.log(`  -> Saved to: ${outDir}`);
+				processed++;
+			} catch (error) {
+				console.error(
+					`  -> Error: ${error instanceof Error ? error.message : error}`,
+				);
+				failed++;
+			}
+		}),
+	);
 
-    // Small delay to avoid rate limits
-    await new Promise((r) => setTimeout(r, 500));
-  }
-
-  console.log(`\nDone! Processed: ${processed}, Failed: ${failed}`);
+	console.log(`\nDone! Processed: ${processed}, Failed: ${failed}`);
 }
 
 main();

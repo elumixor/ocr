@@ -37,45 +37,63 @@ function SongCard({
 }
 
 function SongDetails({ song }: { song: Song }) {
+  const imageUrl = `${import.meta.env.BASE_URL}songs/${song.id}/source.jpeg`;
+
   return (
-    <div style={{ display: "flex", gap: "24px", flex: 1 }}>
-      <div style={{ flex: 1 }}>
-        <h3 style={{ color: "#1a73e8", marginTop: 0, marginBottom: "12px" }}>
-          Ukrainian
-        </h3>
-        <pre
-          style={{
-            whiteSpace: "pre-wrap",
-            fontFamily: "inherit",
-            fontSize: "15px",
-            lineHeight: 1.6,
-            background: "#f8f9fa",
-            padding: "16px",
-            borderRadius: "8px",
-            margin: 0,
-          }}
-        >
-          {song.ukrainian}
-        </pre>
+    <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+      <div style={{ display: "flex", gap: "24px" }}>
+        <div style={{ flex: 1 }}>
+          <h3 style={{ color: "#1a73e8", marginTop: 0, marginBottom: "12px" }}>
+            Ukrainian
+          </h3>
+          <pre
+            style={{
+              whiteSpace: "pre-wrap",
+              fontFamily: "inherit",
+              fontSize: "15px",
+              lineHeight: 1.6,
+              background: "#f8f9fa",
+              padding: "16px",
+              borderRadius: "8px",
+              margin: 0,
+            }}
+          >
+            {song.ukrainian}
+          </pre>
+        </div>
+        <div style={{ flex: 1 }}>
+          <h3 style={{ color: "#e94235", marginTop: 0, marginBottom: "12px" }}>
+            Romanian
+          </h3>
+          <pre
+            style={{
+              whiteSpace: "pre-wrap",
+              fontFamily: "inherit",
+              fontSize: "15px",
+              lineHeight: 1.6,
+              background: "#fef7f6",
+              padding: "16px",
+              borderRadius: "8px",
+              margin: 0,
+            }}
+          >
+            {song.romanian}
+          </pre>
+        </div>
       </div>
-      <div style={{ flex: 1 }}>
-        <h3 style={{ color: "#e94235", marginTop: 0, marginBottom: "12px" }}>
-          Romanian
+      <div>
+        <h3 style={{ color: "#666", marginTop: 0, marginBottom: "12px" }}>
+          Source Image
         </h3>
-        <pre
+        <img
+          src={imageUrl}
+          alt={`Source for ${song.title}`}
           style={{
-            whiteSpace: "pre-wrap",
-            fontFamily: "inherit",
-            fontSize: "15px",
-            lineHeight: 1.6,
-            background: "#fef7f6",
-            padding: "16px",
+            maxWidth: "100%",
             borderRadius: "8px",
-            margin: 0,
+            border: "1px solid #ddd",
           }}
-        >
-          {song.romanian}
-        </pre>
+        />
       </div>
     </div>
   );
