@@ -33,11 +33,16 @@ async function main() {
     const romanianPath = path.join(outDir, "romanian.txt");
     await writeFile(romanianPath, result.romanian, "utf-8");
 
+    // Write sources/references
+    const sourcesPath = path.join(outDir, "sources.md");
+    await writeFile(sourcesPath, result.sources, "utf-8");
+
     console.log(`Done! Output saved to: ${outDir}`);
     console.log(`  - Title: ${result.title}`);
     console.log(`  - Source: ${sourceDest}`);
     console.log(`  - Ukrainian: ${ukrainianPath}`);
     console.log(`  - Romanian: ${romanianPath}`);
+    console.log(`  - Sources: ${sourcesPath}`);
   } catch (error) {
     console.error("Error processing image:", error);
     process.exit(1);

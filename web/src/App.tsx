@@ -5,6 +5,7 @@ interface Song {
   title: string;
   ukrainian: string;
   romanian: string;
+  sources: string;
 }
 
 function SongCard({
@@ -81,19 +82,44 @@ function SongDetails({ song }: { song: Song }) {
           </pre>
         </div>
       </div>
-      <div>
-        <h3 style={{ color: "#666", marginTop: 0, marginBottom: "12px" }}>
-          Source Image
-        </h3>
-        <img
-          src={imageUrl}
-          alt={`Source for ${song.title}`}
-          style={{
-            maxWidth: "100%",
-            borderRadius: "8px",
-            border: "1px solid #ddd",
-          }}
-        />
+      <div style={{ display: "flex", gap: "24px" }}>
+        <div style={{ flex: 1 }}>
+          <h3 style={{ color: "#666", marginTop: 0, marginBottom: "12px" }}>
+            Source Image
+          </h3>
+          <img
+            src={imageUrl}
+            alt={`Source for ${song.title}`}
+            style={{
+              maxWidth: "100%",
+              borderRadius: "8px",
+              border: "1px solid #ddd",
+            }}
+          />
+        </div>
+        {song.sources && (
+          <div style={{ flex: 1 }}>
+            <h3 style={{ color: "#9c27b0", marginTop: 0, marginBottom: "12px" }}>
+              Sources & Analysis
+            </h3>
+            <pre
+              style={{
+                whiteSpace: "pre-wrap",
+                fontFamily: "inherit",
+                fontSize: "13px",
+                lineHeight: 1.5,
+                background: "#f3e5f5",
+                padding: "16px",
+                borderRadius: "8px",
+                margin: 0,
+                maxHeight: "400px",
+                overflow: "auto",
+              }}
+            >
+              {song.sources}
+            </pre>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
-import { readFile } from "fs/promises";
-import path from "path";
 
 const anthropic = new Anthropic({
 	apiKey: process.env.ANTHROPIC_API_KEY,
@@ -10,9 +10,11 @@ export interface ProcessResult {
 	title: string;
 	ukrainian: string;
 	romanian: string;
+	sources: string;
 }
 
-export async function processImage(imagePath: string): Promise<ProcessResult> {
+// Step 1: OCR - Extract Ukrainian text from image
+async function extractUkrainianText(imagePath: string): Promise<string> {
 	const absolutePath = path.resolve(imagePath);
 	const imageBuffer = await readFile(absolutePath);
 	const base64Image = imageBuffer.toString("base64");
@@ -37,26 +39,14 @@ export async function processImage(imagePath: string): Promise<ProcessResult> {
 					},
 					{
 						type: "text",
-						text: `You are processing an image of Ukrainian song lyrics (Christmas carol / колядка).
+						text: `Extract the Ukrainian song lyrics from this image.
 
-Your task:
-1. Extract the song text in Ukrainian from the image. As some images are from the sheet music, don't include any musical notation—only the lyrics. Don't include, for example, dashes used to indicate melismas. For example, "спи-ї-сусе" should be "спи, Iсусе".
-2. Generate a short English title for this song (2-4 words, lowercase, use hyphens for spaces, e.g., "bethlehem-stable" or "christmas-star"). Base it on the song's content/theme.
-3. Translate the Ukrainian text to Romanian. Preserve the poetic structure and line breaks. Do not translate repeating lines. This is just to understand the meaning.
-
-THE OUTPUT TEXT MUST BE VALID UKRAINIAN WORDS.
-
-Understand the context of the song, and make sure it makes sense. Don't output non-existent words. Guess from the context.
-Make sure that the output follows the song structure and has text split on multiple lines. Follow original if possible, but for the sheet music, infer the correct line breaks.
-
-Return your response as JSON with this exact structure:
-{
-  "title": "short-english-title",
-  "ukrainian": "full ukrainian text here",
-  "romanian": "full romanian translation here"
-}
-
-Return ONLY the JSON, no additional text or markdown.`,
+Rules:
+- Only extract the lyrics, no musical notation
+- Remove syllable-splitting hyphens (e.g., "спи-ї-су-се" → "спи, Ісусе")
+- Keep verse numbers if present
+- Preserve line breaks and stanza structure
+- Output ONLY the Ukrainian text, nothing else`,
 					},
 				],
 			},
@@ -64,24 +54,144 @@ Return ONLY the JSON, no additional text or markdown.`,
 	});
 
 	const content = response.content[0];
-	if (content.type !== "text") {
-		throw new Error("Unexpected response type from Claude");
+	if (!content || content.type !== "text") {
+		throw new Error("No text response from OCR");
 	}
 
-	// Parse JSON from response (handle potential markdown code blocks)
-	let jsonStr = content.text.trim();
-	if (jsonStr.startsWith("```")) {
-		jsonStr = jsonStr.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
+	return content.text.trim();
+}
+
+// Step 2: Search and improve lyrics using Perplexity
+async function improveWithSearch(
+	rawText: string,
+): Promise<{ title: string; improved: string; sources: string }> {
+	const response = await fetch("https://api.perplexity.ai/chat/completions", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${process.env.PERPLEXITY_API_KEY}`,
+		},
+		body: JSON.stringify({
+			model: "sonar-pro",
+			messages: [
+				{
+					role: "user",
+					content: `I have OCR-extracted Ukrainian Christmas carol (колядка) lyrics that may contain errors. Please search for this song online and provide the corrected lyrics.
+
+Here's the OCR text:
+${rawText}
+
+Your task:
+1. Search for this Ukrainian Christmas carol online
+2. Find the correct, complete lyrics
+3. Fix any OCR errors, typos, or incorrectly split words
+4. Ensure all words are valid Ukrainian
+5. Generate a short English title (2-4 words, lowercase with hyphens)
+
+First, provide your analysis and the sources you found.
+Then, at the end, return a JSON object on its own line starting with {"title":
+
+Format:
+[Your analysis and explanation of corrections made]
+
+{"title": "english-title-here", "ukrainian": "corrected lyrics here"}`,
+				},
+			],
+		}),
+	});
+
+	if (!response.ok) {
+		throw new Error(`Perplexity API error: ${response.status}`);
 	}
 
-	const result = JSON.parse(jsonStr) as ProcessResult;
+	interface PerplexityResponse {
+		choices?: { message?: { content?: string } }[];
+		citations?: string[];
+	}
+
+	const data = (await response.json()) as PerplexityResponse;
+	const text = data.choices?.[0]?.message?.content;
+	const citations = data.citations || [];
+
+	if (!text) {
+		throw new Error("No response from Perplexity");
+	}
+
+	// Extract JSON from the end of the response
+	const jsonMatch = text.match(/\{[\s\S]*"title"[\s\S]*"ukrainian"[\s\S]*\}$/);
+	if (!jsonMatch) {
+		throw new Error("Could not find JSON in Perplexity response");
+	}
+
+	const result = JSON.parse(jsonMatch[0]);
+
+	// Extract the analysis part (everything before the JSON)
+	const analysisEnd = text.lastIndexOf("{");
+	const analysis = text.substring(0, analysisEnd).trim();
+
+	// Format sources with citations
+	let sources = analysis;
+	if (citations.length > 0) {
+		sources += "\n\n## Sources\n";
+		citations.forEach((url, i) => {
+			sources += `${i + 1}. ${url}\n`;
+		});
+	}
+
+	return {
+		title: result.title,
+		improved: result.ukrainian,
+		sources,
+	};
+}
+
+// Step 3: Translate to Romanian
+async function translateToRomanian(ukrainianText: string): Promise<string> {
+	const response = await anthropic.messages.create({
+		model: "claude-sonnet-4-20250514",
+		max_tokens: 4096,
+		messages: [
+			{
+				role: "user",
+				content: `Translate this Ukrainian Christmas carol to Romanian. Preserve the poetic structure and line breaks.
+
+${ukrainianText}
+
+Return ONLY the Romanian translation, nothing else.`,
+			},
+		],
+	});
+
+	const content = response.content[0];
+	if (!content || content.type !== "text") {
+		throw new Error("No translation response");
+	}
+
+	return content.text.trim();
+}
+
+// Main processing function
+export async function processImage(imagePath: string): Promise<ProcessResult> {
+	console.log("  Step 1: Extracting Ukrainian text...");
+	const rawText = await extractUkrainianText(imagePath);
+
+	console.log("  Step 2: Searching and improving lyrics...");
+	const { title, improved, sources } = await improveWithSearch(rawText);
+
+	console.log("  Step 3: Translating to Romanian...");
+	const romanian = await translateToRomanian(improved);
 
 	// Sanitize title for filesystem
-	result.title = result.title
+	const sanitizedTitle = title
 		.toLowerCase()
 		.replace(/[^a-z0-9-]/g, "-")
 		.replace(/-+/g, "-")
 		.replace(/^-|-$/g, "");
 
-	return result;
+	return {
+		title: sanitizedTitle,
+		ukrainian: improved,
+		romanian,
+		sources,
+	};
 }

@@ -52,6 +52,10 @@ async function main() {
 				const romanianPath = path.join(outDir, "romanian.txt");
 				await writeFile(romanianPath, result.romanian, "utf-8");
 
+				// Write sources/references
+				const sourcesPath = path.join(outDir, "sources.md");
+				await writeFile(sourcesPath, result.sources, "utf-8");
+
 				console.log(`  -> Saved to: ${outDir}`);
 				processed++;
 			} catch (error) {
