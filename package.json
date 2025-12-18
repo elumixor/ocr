@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "process-single": "bun run src/process-single.ts",
-    "process-all": "bun run src/process-all.ts"
+    "process-all": "bun run src/process-all.ts",
+    "dev": "cd web && bun run dev",
+    "build": "cd web && bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest"

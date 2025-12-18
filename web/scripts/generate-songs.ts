@@ -1,5 +1,5 @@
-import { cp, mkdir, readdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import path from "node:path";
 
 const OUT_DIR = path.join(import.meta.dir, "../../out");
 const PUBLIC_SONGS_DIR = path.join(import.meta.dir, "../public/songs");
@@ -24,7 +24,8 @@ async function main() {
 	const folders = await readdir(OUT_DIR);
 	const songs: Song[] = [];
 
-	// Create public/songs directory
+	// Clean and recreate public/songs directory
+	await rm(PUBLIC_SONGS_DIR, { recursive: true, force: true });
 	await mkdir(PUBLIC_SONGS_DIR, { recursive: true });
 
 	for (const folder of folders) {
