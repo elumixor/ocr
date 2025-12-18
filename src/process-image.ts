@@ -83,12 +83,15 @@ ${rawText}
 
 Your task:
 1. Search for this Ukrainian Christmas carol online
-2. Find the correct, complete lyrics
-3. Fix any OCR errors, typos, or incorrectly split words
-4. Ensure all words are valid Ukrainian
-5. Generate a short English title (2-4 words, lowercase with hyphens)
+2. Try to find the exact song or the closest match
+3. If you find the song: return the correct, complete lyrics from your source
+4. If you find a similar song: return the closest match with a note
+5. If you cannot find any match: clean up the OCR text yourself - fix obvious errors, ensure valid Ukrainian words, proper structure with line breaks
+6. Generate a short English title (2-4 words, lowercase with hyphens) based on the content
 
-First, provide your analysis and the sources you found.
+IMPORTANT: Always return lyrics, even if you cannot find an exact match online. In that case, correct the OCR text to the best of your ability.
+
+First, provide your analysis and the sources you found (or explain what corrections you made if no source was found).
 Then, at the end, return a JSON object on its own line starting with {"title":
 
 Format:
@@ -119,15 +122,26 @@ Format:
 
 	// Extract JSON from the end of the response
 	const jsonMatch = text.match(/\{[\s\S]*"title"[\s\S]*"ukrainian"[\s\S]*\}$/);
-	if (!jsonMatch) {
-		throw new Error("Could not find JSON in Perplexity response");
+
+	let result: { title: string; ukrainian: string };
+	let analysis: string;
+
+	if (jsonMatch) {
+		try {
+			result = JSON.parse(jsonMatch[0]);
+			// Extract the analysis part (everything before the JSON)
+			const analysisEnd = text.lastIndexOf("{");
+			analysis = text.substring(0, analysisEnd).trim();
+		} catch {
+			// JSON parsing failed, use fallback
+			result = { title: "ukrainian-carol", ukrainian: rawText };
+			analysis = `Could not parse Perplexity response. Using original OCR text.\n\nRaw response:\n${text}`;
+		}
+	} else {
+		// No JSON found, use fallback with raw OCR text
+		result = { title: "ukrainian-carol", ukrainian: rawText };
+		analysis = `No structured response from Perplexity. Using original OCR text.\n\nRaw response:\n${text}`;
 	}
-
-	const result = JSON.parse(jsonMatch[0]);
-
-	// Extract the analysis part (everything before the JSON)
-	const analysisEnd = text.lastIndexOf("{");
-	const analysis = text.substring(0, analysisEnd).trim();
 
 	// Format sources with citations
 	let sources = analysis;
